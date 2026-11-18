@@ -32,7 +32,7 @@ A complete, interactive, mobile-responsive web platform for a Himachal-based tra
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/akshatghatiya3-ui/HimYatra.git
+git clone https://github.com/sujal-F98/HimYatra.git
 cd HimYatra
 ```
 
