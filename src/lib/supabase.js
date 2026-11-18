@@ -145,3 +145,46 @@ export async function subscribeNewsletterToDatabase(email) {
     return { success: false, error: err.message };
   }
 }
+
+/**
+ * Register / Sign Up a new traveler account
+ */
+export async function registerTravelerToDatabase({ fullName, phone, email, city }) {
+  try {
+    const { data, error } = await supabase
+      .from('travelers')
+      .upsert(
+        [{ full_name: fullName, phone, email: email || null, city: city || null }],
+        { onConflict: 'phone' }
+      )
+      .select()
+      .single();
+
+    if (error) {
+      return { success: false, error: error.message };
+    }
+    return { success: true, data };
+  } catch (err) {
+    return { success: false, error: err.message };
+  }
+}
+
+/**
+ * Look up existing traveler account by phone
+ */
+export async function lookupTravelerInDatabase(phone) {
+  try {
+    const { data, error } = await supabase
+      .from('travelers')
+      .select('*')
+      .eq('phone', phone)
+      .maybeSingle();
+
+    if (error) {
+      return { success: false, error: error.message };
+    }
+    return { success: true, data };
+  } catch (err) {
+    return { success: false, error: err.message };
+  }
+}

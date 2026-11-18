@@ -91,13 +91,13 @@ export default function Navbar({ onOpenTripBuilder, onOpenContact, onOpenSignIn,
               <ArrowUpRight className="w-3.5 h-3.5 text-slate-300" />
             </button>
 
-            {/* Solid White Pill Button: 👤 Sign In */}
+            {/* Solid White Pill Button: 👤 Sign In / Sign Up */}
             <button
               onClick={onOpenSignIn}
               className="px-4 lg:px-4.5 py-2 rounded-full bg-white text-slate-950 hover:bg-slate-100 font-semibold text-xs lg:text-sm transition flex items-center gap-1.5 shadow-sm active:scale-95 cursor-pointer"
             >
               <User className="w-4 h-4 text-slate-900" />
-              <span>Sign In</span>
+              <span>Sign In / Sign Up</span>
             </button>
           </div>
 
@@ -108,7 +108,7 @@ export default function Navbar({ onOpenTripBuilder, onOpenContact, onOpenSignIn,
               className="px-3 py-1.5 rounded-full bg-white text-slate-950 font-semibold text-xs flex items-center gap-1"
             >
               <User className="w-3.5 h-3.5" />
-              <span>Sign In</span>
+              <span>Sign In / Up</span>
             </button>
 
             <button
@@ -156,7 +156,7 @@ export default function Navbar({ onOpenTripBuilder, onOpenContact, onOpenSignIn,
               className="w-full py-2.5 rounded-full bg-white text-slate-950 font-semibold text-sm flex items-center justify-center gap-1.5 shadow-sm"
             >
               <User className="w-4 h-4 text-slate-900" />
-              <span>Sign In / My Account</span>
+              <span>Sign In / Sign Up</span>
             </button>
           </div>
         </div>
