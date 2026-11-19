@@ -29,6 +29,19 @@ export default function App() {
   const [bookingConfirmationData, setBookingConfirmationData] = useState(null);
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [signInModalOpen, setSignInModalOpen] = useState(false);
+  const [currentUser, setCurrentUser] = useState(() => {
+    try {
+      const saved = localStorage.getItem('himvelly_user');
+      return saved ? JSON.parse(saved) : null;
+    } catch (e) {
+      return null;
+    }
+  });
+
+  const handleSignOut = () => {
+    localStorage.removeItem('himvelly_user');
+    setCurrentUser(null);
+  };
 
   // Handlers with direct Supabase real-time storage
   const handleHeroBooking = async (bookingData) => {
@@ -111,6 +124,8 @@ export default function App() {
         onOpenTripBuilder={handleOpenTripBuilder}
         onOpenContact={() => setContactModalOpen(true)}
         onOpenSignIn={() => setSignInModalOpen(true)}
+        currentUser={currentUser}
+        onSignOut={handleSignOut}
         onSelectDestinationFilter={(state) => {
           setActiveDestinationFilter(state);
           const el = document.getElementById('destinations');
@@ -217,6 +232,10 @@ export default function App() {
       {signInModalOpen && (
         <SignInModal 
           onClose={() => setSignInModalOpen(false)}
+          onLoginSuccess={(user) => {
+            setCurrentUser(user);
+            setSignInModalOpen(false);
+          }}
         />
       )}
 
